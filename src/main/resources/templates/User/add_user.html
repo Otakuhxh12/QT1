@@ -9,28 +9,27 @@
 <body class="bg-gray-100">
 
 <div class="flex items-center justify-center h-screen">
-    <form th:action="@{/user/add}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
+    <form th:object="${newUser}" th:action="@{/user/add}" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
         <h2 class="text-2xl font-bold mb-6 text-center">Add User</h2>
-
         <div class="mb-4">
-            <label for="newUserName" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-            <input type="text" id="newUserName" name="userName" class="form-input border-2 border-gray-300 rounded-md py-2 px-3" required>
+            <label for="newUserUserName" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+            <input type="text" id="newUserUserName" th:field="*{userName}" class="form-input border-2 border-gray-300 rounded-md py-2 px-3" required>
         </div>
 
         <div class="mb-4">
             <label for="newUserEmail" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-            <input type="email" id="newUserEmail" name="email" class="form-input border-2 border-gray-300 rounded-md py-2 px-3" required>
+            <input type="email" id="newUserEmail" th:field="*{email}" class="form-input border-2 border-gray-300 rounded-md py-2 px-3" required>
         </div>
 
         <div class="mb-4">
             <label for="newUserPhone" class="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
-            <input type="text" id="newUserPhone" name="mobilePhone" class="form-input border-2 border-gray-300 rounded-md py-2 px-3" required>
+            <input type="text" id="newUserPhone" th:field="*{mobilePhone}" class="form-input border-2 border-gray-300 rounded-md py-2 px-3" required>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2">Status:</label>
             <div class="flex items-center">
-                <input type="checkbox" id="newUserStatus" name="isActive" class="form-checkbox h-5 w-5 text-green-500">
+                <input type="checkbox" id="newUserStatus" th:field="*{active}" class="form-checkbox h-5 w-5 text-green-500">
                 <label for="newUserStatus" class="ml-2 text-gray-700 text-sm font-bold">Active</label>
             </div>
         </div>

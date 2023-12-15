@@ -18,8 +18,12 @@ public class User {
     private int userID;
 
     private String userName;
+
     private String email;
+
     private String mobilePhone;
+
     private boolean isActive;
+
     private Date dateCreated;
 }

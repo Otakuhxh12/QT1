@@ -57,12 +57,18 @@ public class UserController {
         return "User/update_user";
     }
 
-    @PostMapping("/update")
-    public String updateUser(@ModelAttribute User updatedUser) {
-        User existingUser = service.getUserById(updatedUser.getUserID());
-        updatedUser.setDateCreated(existingUser.getDateCreated());
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable int id, @ModelAttribute User updatedUser) {
+        User existingUser = service.getUserById(id);
 
-        service.saveUser(updatedUser);
+        existingUser.setUserName(updatedUser.getUserName());
+        existingUser.setEmail(updatedUser.getEmail());
+        existingUser.setMobilePhone(updatedUser.getMobilePhone());
+        existingUser.setActive(updatedUser.isActive());
+
+        existingUser.setDateCreated(existingUser.getDateCreated());
+
+        service.saveUser(existingUser);
         return "redirect:/user";
     }
 
