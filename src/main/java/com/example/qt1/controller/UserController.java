@@ -50,4 +50,21 @@ public class UserController {
         return "redirect:/user";
     }
 
+    @GetMapping("/update/{id}")
+    public String showUpdateUserForm(@PathVariable int id, Model model) {
+        User existingUser = service.getUserById(id);
+        model.addAttribute("existingUser", existingUser);
+        return "User/update_user";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute User updatedUser) {
+        // Set the dateCreated to the existing value
+        User existingUser = service.getUserById(updatedUser.getUserID());
+        updatedUser.setDateCreated(existingUser.getDateCreated());
+
+        service.saveUser(updatedUser);
+        return "redirect:/user";
+    }
+
 }
