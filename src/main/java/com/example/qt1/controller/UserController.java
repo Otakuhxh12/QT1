@@ -59,7 +59,6 @@ public class UserController {
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute User updatedUser) {
-        // Set the dateCreated to the existing value
         User existingUser = service.getUserById(updatedUser.getUserID());
         updatedUser.setDateCreated(existingUser.getDateCreated());
 

@@ -28,4 +28,8 @@ public class UserService {
     public void deleteUser(int id) {
         repo.deleteById(id);
     }
+
+    public User getUserById(int userID) {
+        return repo.findByUserID(userID);
+    }
 }
